@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>my project: @ViewBag.Title</title>
+	@*css defined top to button*@
+	<link href="~/scripts/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="~/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="~/css/site.css" rel="stylesheet" />
+
+</head>
+<body>
+	<header class="container">
+		<nav class="navbar navbar-dark bg-dark navbar-expand-md"> @*expand-md makes it hidden for bigger sizes*@
+			<h1 class="navbar-brand"><i class="fa  fa-paint-brush"></i>Welcome to my page</h1>
+			<button class="navbar-toggler" data-toggle="collapse" data-target="#theMenu"> @*data-target is what we want to show or hide which should be added in div below as id*@
+				<span class="navbar-toggler-icon"></span>
+
+			</button>
+			<div id="theMenu" class="navbar-collapse collapse"> @*the second collapse in this class shows that at first it should be collapsed as in closed*@
+				<ul class="navbar-nav">
+					<li class="nav-item">
+					<a class="nav-link" asp-controller="App" asp-action="Index">Home</a></li>
+					<li class="nav-item">
+					<a class="nav-link" asp-controller="App" asp-action="Contact">Contact</a></li>
+					<li class="nav-item">
+					<a class="nav-link" asp-controller="App" asp-action="About">About</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<section class="container">
+		<h2 class="text-center">@ViewBag.Title</h2>
+		@RenderBody()
+	</section>
+	<footer class="container">
+		<div class="text-center">
+			Copyright 2018 Parisa treat LLC
+		</div>
+	</footer>
+
+	@*bootstrap requires jquery so it should be loaded after jquery*@
+	<script src="~/scripts/jquery/dist/jquery.min.js"></script>
+	<script src="~/scripts/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/index.js"></script>
+	@RenderSection("scripts", false) @*false here means that the script is not needed for all pages but only the one which has section script that includes the scripts like in contact page.*@
+</body>
+</html>
